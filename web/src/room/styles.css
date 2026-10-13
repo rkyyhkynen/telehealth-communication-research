@@ -1,0 +1,233 @@
+body {
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  #video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    grid-auto-rows: minmax(450px, 1fr);
+    gap: 20px;
+    justify-items: stretch;
+    align-items: stretch;
+  }
+
+  #video-grid > * {
+    width: 100%;
+    min-width: 0;
+  }
+
+  video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transform: rotateY(180deg);
+    -webkit-transform:rotateY(180deg);
+    -moz-transform:rotateY(180deg);
+  }
+
+  .ai-patient-slot {
+    width: 100%;
+    height: 100%;
+    min-height: 450px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    background: #202020;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .ai-patient-slot canvas {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .ai-patient-slot::after {
+    content: "AI Patient";
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    color: white;
+    background: rgba(0, 0, 0, 0.55);
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  body[data-locale="fi"] .ai-patient-slot::after {
+    content: "AI-potilas";
+  }
+
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+
+  .view-switch {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+  }
+
+  .controls-help-text {
+    margin: 8px 0 0;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #4b5563;
+  }
+
+  .patient-talk-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .patient-talk-button {
+    background-color: #0f766e;
+  }
+
+  .patient-talk-button:hover {
+    background-color: #0d5f59;
+  }
+
+  .patient-talk-button.is-active {
+    background-color: #b45309;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #4285F4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .button:hover {
+    background-color: #3367D6;
+  }
+
+  .button:active {
+    background-color: #254AAD;
+  }
+
+  .button:disabled {
+    background-color: #888888;
+    cursor: not-allowed;
+  }
+
+  .button.is-active {
+    background-color: #254AAD;
+  }
+
+  .button-lang {
+    background-color: #0f766e;
+  }
+
+  .button-lang:hover {
+    background-color: #0d5f59;
+  }
+
+  #processingIndicator {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 10px auto;
+}
+
+.success-checkmark {
+    width: 40px;
+    height: 40px;
+    margin: 10px auto;
+    background: #4CAF50;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.check-icon {
+    color: white;
+    font-size: 24px;
+    line-height: 1;
+}
+
+.error-icon {
+    width: 40px;
+    height: 40px;
+    margin: 10px auto;
+    font-size: 24px;
+    line-height: 40px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 900px) {
+  .container {
+    padding: 16px;
+  }
+
+  #video-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: minmax(280px, 1fr);
+  }
+
+  .ai-patient-slot {
+    min-height: 280px;
+  }
+
+  .controls {
+    flex-wrap: wrap;
+  }
+}
