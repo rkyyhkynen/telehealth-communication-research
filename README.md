@@ -1,5 +1,7 @@
 # CallPython
 
+This project is an experimental prototype created for research purposes. It is not intended for production use.
+
 Telehealth simulation app with:
 
 - live room call (`/room/:room`)
